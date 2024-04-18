@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""test amenity """
+""" Test Amenity """
 from tests.test_models.test_base_model import test_basemodel
 from models.amenity import Amenity
 from models.base_model import BaseModel
@@ -13,7 +13,7 @@ import unittest
 storage_t = getenv("HBNB_TYPE_STORAGE")
 
 class test_Amenity(test_basemodel):
-    """test amenity"""
+    """ Test Amenity """
 
     def __init__(self, *args, **kwargs):
         """ """
@@ -28,9 +28,9 @@ class test_Amenity(test_basemodel):
 
 
 class Test_PEP8(unittest.TestCase):
-    """User"""
+    """test"""
     def test_pep8_user(self):
-        """pep8 style"""
+        """test pep8 style"""
         pep8style = pycodestyle.StyleGuide(quiet=True)
         result = pep8style.check_files(['models/amenity.py'])
         self.assertEqual(result.total_errors, 0,
@@ -38,9 +38,9 @@ class Test_PEP8(unittest.TestCase):
 
 
 class test_inherit_basemodel(unittest.TestCase):
-    """Check if user inherit from BaseModel"""
+    """Check if user inherit BaseModel"""
     def test_instance(self):
-        """check if User instance BaseModel"""
+        """check if user is BaseModel"""
         user = Amenity()
         self.assertIsInstance(user, Amenity)
         self.assertTrue(issubclass(type(user), BaseModel))
@@ -48,7 +48,7 @@ class test_inherit_basemodel(unittest.TestCase):
 
 
 class test_Amenity_BaseModel(unittest.TestCase):
-    """Check user class"""
+    """ user class"""
     def test_instances(self):
         with patch('models.amenity'):
             instance = Amenity()
@@ -128,7 +128,7 @@ class TestAmenity(unittest.TestCase):
     """Check Amenity class"""
 
     def test_is_subclass(self):
-        """Check Amenity subclass of BaseModel"""
+        """Check Amenity is a subclass of BaseModel"""
         amenity = Amenity()
         self.assertIsInstance(amenity, BaseModel)
         self.assertTrue(hasattr(amenity, "id"))
@@ -136,7 +136,7 @@ class TestAmenity(unittest.TestCase):
         self.assertTrue(hasattr(amenity, "updated_at"))
 
     def test_name_attr(self):
-        """Check Amenity has attribute name, and it's empty string"""
+        """Check that Amenity has attribute name, and it's as an empty string"""
         amenity = Amenity()
         self.assertTrue(hasattr(amenity, "name"))
         if storage_t == 'db':
@@ -145,7 +145,7 @@ class TestAmenity(unittest.TestCase):
             self.assertEqual(amenity.name, "")
 
     def test_to_dict_creates_dict(self):
-        """test to_dict method creates a dictionary proper attrs"""
+        """Check to_dict method creates a dictionary """
         am = Amenity()
         print(am.__dict__)
         new_d = am.to_dict()
@@ -157,7 +157,7 @@ class TestAmenity(unittest.TestCase):
         self.assertTrue("__class__" in new_d)
 
     def test_to_dict_values(self):
-        """Check values in dict to_dict are correct"""
+        """Check that values dict returned from to_dict """
         t_format = "%Y-%m-%dT%H:%M:%S.%f"
         am = Amenity()
         new_d = am.to_dict()
@@ -168,7 +168,7 @@ class TestAmenity(unittest.TestCase):
         self.assertEqual(new_d["updated_at"], am.updated_at.strftime(t_format))
 
     def test_str(self):
-        """Check str method correct output"""
+        """Check str method has correct output"""
         amenity = Amenity()
         string = "[Amenity] ({}) {}".format(amenity.id, amenity.__dict__)
         self.assertEqual(string, str(amenity))
