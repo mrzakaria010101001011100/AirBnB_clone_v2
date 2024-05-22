@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Write a Bash script that sets up your web servers
+# Script for setting up a web static
 
-# Updates Nginx
+# Updates package
 sudo apt-get update
 
 # Check for nginx if it is installed or not
@@ -28,7 +28,7 @@ sudo tee "$path/releases/test/index.html" >/dev/null <<EOF
 </html>
 EOF
 
-# Create a symbolic link
+# Sym-link creation
 sudo ln -sf "$path/releases/test/" "$path/current"
 
 # Ownership modification
